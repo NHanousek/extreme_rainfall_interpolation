@@ -9,4 +9,4 @@ Hill, P.I., Nathan, R.J., Rahman, A., Lee, B.C., Crowe, P. and Weinmann, P.E. (2
 
 Siriwardena, L. & Weinmann, P.E. (1998). A technique to interpolate frequency curves between frequent events and probable maximum events. CRCCH Research Report 98/9, Cooperative Research Centre for Catchment Hydrology, December 1998.
 
-Sharpe, R.G. (2024). ............................................
+Sharpe, R.G. (2024). Dealing with vertex perplexity in parabolic interpolation of design rainfall. ANCOLD conference, November 2024.
