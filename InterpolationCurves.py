@@ -36,8 +36,6 @@ class CoercedQuadratic(Curve):
         self.a1 = 0
         self.a2 = 0
         self.inflection_aep = 0
-        self.vertex_x = 0
-        self.vertex_aep = 0
 
     def fit_curve(self):
         # Get the transformed AEPs
@@ -65,11 +63,6 @@ class CoercedQuadratic(Curve):
         # Get quadratic parameters
         self.a1 = self.Sgc * self.xd
         self.a2 = (self.Sgap - self.Sgc) * self.xd
-        self.vertex_x = -self.a1 / (2 * self.a2) * self.xd
-        if self.method == 'SiriwardenaWeinmann1998':
-            self.vertex_aep = 10 ** (self.vertex_x + Xy2)
-        elif self.method == 'HillAndOthers2000':
-            self.vertex_aep = 1 / (1 - ndtr(self.vertex_x + Xy2))
 
     def get_quantile(self, aep):
         Ty2 = np.log10(self.aep_2000)  # Transformed depth for 1 in 2000
@@ -119,7 +112,7 @@ class GEV(Curve):
         self.shape = 0
 
     def fit_curve(self):
-        print(f'Fitting GEV to aeps:', self.aeps)
+        # print(f'Fitting GEV to aeps:', self.aeps)
         solution = optimize.root(self.root_shape, x0=0.1)
         # print(solution)
         self.shape = solution.x[0]
@@ -128,8 +121,8 @@ class GEV(Curve):
         q_1_2 = self.quantiles[1] - self.quantiles[0]
         self.scale = q_1_2 * self.shape / numerator
         self.location = self.quantiles[0] - (self.scale / self.shape) * (1 - q[0])
-        print('Quantiles:', q_1_2)
-        print(self.quantiles)
+        # print('Quantiles:', q_1_2)
+        # print(self.quantiles)
         print(f'shape: {self.shape} | scale: {self.scale} | location: {self.location}')
 
     def root_shape_old(self, shape):
