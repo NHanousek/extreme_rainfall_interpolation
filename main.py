@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Assign the rainfall data - this bit will be project specific
-depth_1000 = 200
-depth_2000 = 250
-pmp_depth = 900
-pmp_aep = 500000
+depth_1000 = 734.2
+depth_2000 = 804.1
+pmp_depth = 920
+pmp_aep = 10000000
 
 # Get the interpolations for Siriwardena & Weinmann (1998)
 sw = CoercedQuadratic('SiriwardenaWeinmann1998')
@@ -39,7 +39,7 @@ gev.setup_rainfall_boundaries(aep_2000=depth_2000, aep_1000=depth_1000,
 gev.fit_curve()
 
 # Compute rainfall estimates
-aeps = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000]
+aeps = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000]
 header = ['SW depth', 'Hill depth', 'GEV depth']
 df = pd.DataFrame(index=aeps, columns=header)
 for aep in aeps:
